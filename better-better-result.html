@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bouncing DVD</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        #dvd {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/DVD-Video_Logo.svg/1200px-DVD-Video_Logo.svg.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dvd"></div>
+    <script>
+        const dvd = document.getElementById('dvd');
+        const maxX = window.innerWidth - dvd.offsetWidth;
+        const maxY = window.innerHeight - dvd.offsetHeight;
+
+        let x = Math.random() * maxX;
+        let y = Math.random() * maxY;
+
+        let dx = (Math.random() - 0.5) * 10;
+        let dy = (Math.random() - 0.5) * 10;
+
+        function animate() {
+            x += dx;
+            y += dy;
+
+            if (x < 0) {
+                x = 0;
+                dx = -dx;
+            }
+
+            if (x > maxX) {
+                x = maxX;
+                dx = -dx;
+            }
+
+            if (y < 0) {
+                y = 0;
+                dy = -dy;
+            }
+
+            if (y > maxY) {
+                y = maxY;
+                dy = -dy;
+            }
+
+            dvd.style.transform = `translate(${x}px, ${y}px)`;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>

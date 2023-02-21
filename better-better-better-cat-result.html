@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Cat Bouncing</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    #dvd {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 100px;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYmmJckqaw2_lKwvliczt1A9w1CwPKN7BbqA&usqp=CAU%27);%20background-repeat:%20no-repeat;');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dvd"></div>
+  <script>
+    const dvd = document.getElementById('dvd');
+    const maxX = window.innerWidth - dvd.offsetWidth;
+    const maxY = window.innerHeight - dvd.offsetHeight;
+
+    let x = Math.random() * maxX;
+    let y = Math.random() * maxY;
+
+    let dx = (Math.random() - 0.5) * 10;
+    let dy = (Math.random() - 0.5) * 10;
+
+    const images = [
+      "https://gifdb.com/images/high/shocked-emotional-teary-eyed-cat-crying-d9v3q55x3do4lk6z.gif",
+      "https://i1.sndcdn.com/avatars-GujBa8wkGP1FmylY-OLjg5Q-t500x500.jpg",
+      "https://suddenlycat.com/wp-content/uploads/2020/09/Screenshot-2020-08-30-at-3.25.29-PM-242x300.png",
+      "https://i.ytimg.com/vi/-_c1dLgTjoo/hqdefault.jpg",
+      "https://i.cbc.ca/1.5359228.1577206958!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_620/smudge-the-viral-cat.jpg",
+      "https://www.worldsbestcatlitter.com/wp-content/uploads/2019/12/02_coughing-cat-meme.jpg",
+      "https://i.chzbgr.com/full/9627057664/h1D0FB5A3/cat",
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYmmJckqaw2_lKwvliczt1A9w1CwPKN7BbqA&usqp=CAU%27);%20background-repeat:%20no-repeat;'
+    ];
+
+    function getRandomImage() {
+      return images[Math.floor(Math.random() * images.length)];
+    }
+
+    function animate() {
+      x += dx;
+      y += dy;
+
+      if (x < 0) {
+        x = 0;
+        dx = -dx;
+        dvd.style.backgroundImage = `url('${getRandomImage()}')`;
+      }
+
+      if (x > maxX) {
+        x = maxX;
+        dx = -dx;
+        dvd.style.backgroundImage = `url('${getRandomImage()}')`;
+      }
+
+      if (y < 0) {
+        y = 0;
+        dy = -dy;
+        dvd.style.backgroundImage = `url('${getRandomImage()}')`;
+      }
+
+      if (y > maxY) {
+        y = maxY;
+        dy = -dy;
+        dvd.style.backgroundImage = `url('${getRandomImage()}')`;
+      }
+
+      dvd.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+
+</html>

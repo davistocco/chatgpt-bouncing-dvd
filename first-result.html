@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DVD Logo Screensaver com CSS</title>
+    <style>
+        .dvd-logo {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            animation: dvd-bounce 3s infinite;
+        }
+
+        @keyframes dvd-bounce {
+            0% {
+                left: 0;
+                top: 0;
+            }
+
+            25% {
+                left: calc(100% - 50px);
+                top: 0;
+            }
+
+            50% {
+                left: calc(100% - 50px);
+                top: calc(100% - 50px);
+            }
+
+            75% {
+                left: 0;
+                top: calc(100% - 50px);
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dvd-logo"></div>
+</body>
+
+</html>
